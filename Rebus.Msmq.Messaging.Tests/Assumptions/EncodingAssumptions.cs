@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using NUnit.Framework;
+#pragma warning disable SYSLIB0001
 
 namespace Rebus.Msmq.Messaging.Tests.Assumptions;
 
