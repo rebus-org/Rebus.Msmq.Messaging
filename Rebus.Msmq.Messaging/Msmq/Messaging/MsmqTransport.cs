@@ -74,21 +74,7 @@ public class MsmqTransport : AbstractRebusTransport, IInitializable, IDisposable
     {
         if (!MsmqUtil.IsLocal(address)) return;
 
-        var inputQueuePath = MsmqUtil.GetPath(address);
-
-        if (_newQueueCallbacks.Any())
-        {
-            MsmqUtil.EnsureQueueExists(inputQueuePath, _log, messageQueue =>
-            {
-                _newQueueCallbacks.ForEach(callback => callback(messageQueue));
-            });
-        }
-        else
-        {
-            MsmqUtil.EnsureQueueExists(inputQueuePath, _log);
-        }
-
-        MsmqUtil.EnsureMessageQueueIsTransactional(inputQueuePath);
+        EnsureCreatedAndVerifyQueue(address);
     }
 
     /// <summary>
@@ -287,22 +273,9 @@ public class MsmqTransport : AbstractRebusTransport, IInitializable, IDisposable
         {
             if (_inputQueue != null) return _inputQueue;
 
-            var inputQueuePath = MsmqUtil.GetPath(Address);
+            EnsureCreatedAndVerifyQueue(Address);
 
-            if (_newQueueCallbacks.Any())
-            {
-                MsmqUtil.EnsureQueueExists(inputQueuePath, _log, messageQueue =>
-                {
-                    _newQueueCallbacks.ForEach(callback => callback(messageQueue));
-                });
-            }
-            else
-            {
-                MsmqUtil.EnsureQueueExists(inputQueuePath, _log);
-            }
-            MsmqUtil.EnsureMessageQueueIsTransactional(inputQueuePath);
-
-            _inputQueue = new MessageQueue(inputQueuePath, QueueAccessMode.SendAndReceive)
+            _inputQueue = new MessageQueue(MsmqUtil.GetPath(Address), QueueAccessMode.SendAndReceive)
             {
                 MessageReadPropertyFilter = new MessagePropertyFilter
                 {
@@ -314,6 +287,23 @@ public class MsmqTransport : AbstractRebusTransport, IInitializable, IDisposable
         }
 
         return _inputQueue;
+    }
+
+    void EnsureCreatedAndVerifyQueue(string address)
+    {
+        void InvokeNewQueueCallbacks(MessageQueue messageQueue)
+        {
+            foreach (var callback in _newQueueCallbacks)
+            {
+                callback(messageQueue);
+            }
+        }
+
+        var inputQueuePath = MsmqUtil.GetPath(address);
+
+        MsmqUtil.EnsureQueueExists(inputQueuePath, _log, InvokeNewQueueCallbacks);
+
+        MsmqUtil.EnsureMessageQueueIsTransactional(inputQueuePath);
     }
 
     /// <summary>
