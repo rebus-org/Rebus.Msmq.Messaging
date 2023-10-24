@@ -1,0 +1,19 @@
+image: Visual Studio 2022
+
+services:
+  - msmq
+
+shallow_clone: true
+
+cache:
+  - packages -> **\packages.config
+  - '%LocalAppData%\NuGet\Cache'
+
+before_build:
+  - appveyor-retry dotnet restore -v Minimal
+
+build_script:
+  - dotnet build -c Release --no-restore
+
+test_script:
+  - dotnet test -c Release --no-restore

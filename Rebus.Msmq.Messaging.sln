@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stuff", "stuff", "{1ABDD7C1-1F8D-402D-8692-3E4B66962DE0}"
+	ProjectSection(SolutionItems) = preProject
+		CHANGELOG.md = CHANGELOG.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebus.Msmq.Messaging", "Rebus.Msmq.Messaging\Rebus.Msmq.Messaging.csproj", "{2A4D4D6C-FAC6-433F-A4CB-30114D2276F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebus.Msmq.Messaging.Tests", "Rebus.Msmq.Messaging.Tests\Rebus.Msmq.Messaging.Tests.csproj", "{8D15E2C9-41BC-4DF3-91D0-5975AA58B7C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A4D4D6C-FAC6-433F-A4CB-30114D2276F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4D4D6C-FAC6-433F-A4CB-30114D2276F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4D4D6C-FAC6-433F-A4CB-30114D2276F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4D4D6C-FAC6-433F-A4CB-30114D2276F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D15E2C9-41BC-4DF3-91D0-5975AA58B7C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D15E2C9-41BC-4DF3-91D0-5975AA58B7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D15E2C9-41BC-4DF3-91D0-5975AA58B7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D15E2C9-41BC-4DF3-91D0-5975AA58B7C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95ABD515-CD62-4ACC-BED8-E596543C0839}
+	EndGlobalSection
+EndGlobal
