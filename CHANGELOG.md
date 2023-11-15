@@ -1,5 +1,6 @@
 # Changelog
 
-## 1.0.0-a01
+## 1.0.0
 * Initial version
+* Update to Rebus 8
 
