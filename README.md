@@ -23,3 +23,4 @@ YES! This package is based on an experimental port of the code from full FX `Sys
 
 This means that it might not work as expected. Or maybe it does? The tests seem to pass. All I'm saying is this: USE AT YOUR OWN RISK! 😨
 
+✨✨✨ October 2024 note: I have now had first-hand experience using the Rebus.Msmq.Messaging library in production systems for almost a year, and there hasn't been any issues with it, whatsoever! ✨✨✨
